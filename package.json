@@ -1,0 +1,20 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "simple todo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "todo"
+  ],
+  "author": "Foram Sojitra",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express.js": "^1.0.0",
+    "mongoose": "^5.7.6"
+  }
+}

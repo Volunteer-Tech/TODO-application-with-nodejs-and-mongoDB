@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo</title>
+
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="stylesheets.css">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			Show();
+			$( "#form1" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: function(response){
+                     $('#form1')[0].reset();
+                     Show();
+                   // alert('asssaaa');
+
+                },
+                error: function() {
+                }
+            })
+			});
+
+			$('table').on('click', '.delete-button', function() {
+				
+				var rowEl = $(this).closest('tr');
+				var id = rowEl.find('.id').text();
+				$.ajax({
+					url: '/todo/' + id,
+					method: 'DELETE',
+					contentType: 'application/json',
+					success: function(response) {
+
+						Show();
+					}
+				});
+			});
+			$( "#a" ).click(function() {
+				Show();
+			});
+			function Show(){
+           // alert("Show");
+           $.ajax({
+           	type: 'GET',
+           	url: '/show',
+           	dataType: "json",
+           	success: function(response){
+           		var tbodyEl = $('tbody');
+
+           		tbodyEl.html('');
+
+           		response.forEach(function(product) {
+           			tbodyEl.append('\
+           				<tr>\
+           				<td class="id">' + product.unique_id + '</td>\
+           				<td>' + product.title + '</td>\
+           				<td>\
+           				<button class="delete-button btn">Archives</button>\
+           				</td>\
+           				</tr>\
+           				');
+           		});
+           	},
+           	error: function() {
+           	}
+           })
+       }
+		});
+
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+		<p class="h1">Add Todo</p>
+		</div>
+		<div class="row">
+		<form id="form1" method="POST" class="form-inline">
+			<input type="text" class="form-control" name="todo">
+			<button type="submit" name="Add" value="add" class="btn">Add Todo</button>
+		</form>
+		</div>
+		<div class="row">
+			
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Todos</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		
+		</div>
+	</div>
+</body>
+</html>
