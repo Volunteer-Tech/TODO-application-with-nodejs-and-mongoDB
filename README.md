@@ -1,11 +1,5 @@
 
-
-
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px src="https://www.flaticon.com/svg/static/icons/svg/1/1560.svg"</a>
-</p>
-<h1 align = 'center'>Simple-Todo_App-with-Node-express.js-MongoDB-For-beginners</h1>
+# Simple-Todo_App-with-Node-express.js-MongoDB-For-beginners
 
 
 ## Getting Started
@@ -29,3 +23,6 @@ Code is Running on
 + http://localhost:3000/
 
 
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
