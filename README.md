@@ -1,5 +1,5 @@
 
-# Simple-Todo_App-with-Node-express.js-MongoDB-For-beginners
+# Simple Todo App with Node express.js MongoDB - For beginners
 
 
 ## Getting Started
